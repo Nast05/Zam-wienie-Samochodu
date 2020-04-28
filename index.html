@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konfigurator Tesli</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function Start() {
+            cenaA = 200000
+            document.getElementById("cenaS").innerHTML = "Twoja cena:" + cenaA + "$";
+        }
+
+        function Fcena() {
+            let cena = cenaA;
+            let n1 = document.getElementById("n1").checked;
+            let n2 = document.getElementById("n2").checked;
+            let n3 = document.getElementById("n3").checked;
+            if (n2) {
+                cena = cena * 1.1;
+            }
+            if (n3) {
+                cena = cena * 1.3;
+            }
+            let sil = document.getElementById("silnik").value;
+            if (sil == "D") {
+                cena = cena + 2000;
+            }
+            if (sil == "H") {
+                cena = cena + 40000;
+            }
+            if (sil == "WE") {
+                cena = cena + 60000;
+            }
+            let kl = document.getElementById("kl").checked;
+            let na = document.getElementById("na").checked;
+            let Og = document.getElementById("Og").checked;
+            let Ts = document.getElementById("Ts").checked;
+            let At = document.getElementById("At").checked;
+            let sp = document.getElementById("sp").checked;
+            let sl = document.getElementById("sl").checked;
+            let AB = document.getElementById("AB").checked;
+            if (kl) {
+                cena = cena + 100
+            }
+            if (na) {
+                cena = cena + 700
+            }
+            if (Og) {
+                cena = cena + 1000
+            }
+            if (Ts) {
+                cena = cena + 3500
+            }
+            if (At) {
+                cena = cena + 15000
+            }
+            if (sp) {
+                cena = cena + 1000
+            }
+            if (sl) {
+                cena = cena + 100
+            }
+            if (AB) {
+                cena = cena + 2000
+            }
+
+
+            cena = Math.round(cena);
+            document.getElementById("cenaS").innerHTML = "Twoja cena:" + cena + "$";
+        }
+    </script>
+</head>
+
+<body onload="Start()">
+    <header>
+        <h1>Wybierz konfigurację samochodu</h1>
+    </header>
+    <main>
+        <div id="cenaS">200000</div>
+        <form action="mailto:oskar.kubel@gmail.com" enctype="text/plain" method="POST">
+            <div class="row">
+                <fieldset>
+                    <legend>Rodzaj Nadwozia</legend>
+                    <input type="radio" name="Nadwozie" id="n1" value="1" onchange="Fcena()">Kabriolet
+                    <input type="radio" name="Nadwozie" id="n2" value="2" onchange="Fcena()">Sedan
+                    <input type="radio" name="Nadwozie" id="n3" value="3" onchange="Fcena()">Nadwozie lamborghini
+
+                </fieldset>
+            </div>
+            <div>
+                <label for="silnik">Rodzaj Slinika</label>
+                <select name="silnik" id="silnik" onchange="Fcena()">
+                    <option value="WE">Wydajniejszy Elektryczny</option>
+                    <option value="B">Benzynowy</option>
+                    <option value="H">Hybryda</option>
+                    <option value="D">Diesel</option>
+                </select>
+            </div>
+            <div class="row">
+                <input type="checkbox" name="" id="kl" onchange="Fcena()">Klimatyzacja
+                <input type="checkbox" name="" id="na" onchange="Fcena()">Nawigacja
+                <input type="checkbox" name="" id="Og" onchgange="Fcena()">Ogrzewane całe auto i fotele
+                <input type="checkbox" name="" id="Ts" onchgange="Fcena()">dodatki od Tesli
+                <br>
+                <input type="checkbox" name="" id="At" onchange="Fcena()">Autopilot Tesli
+                <input type="checkbox" name="" id="sp" onchange="Fcena()">Spoiler
+                <input type="checkbox" name="" id="sl" onchange="Fcena()">Składane Lusterka
+                <input type="checkbox" name="" id="AB" onchange="Fcena()">ABS
+            </div>
+            <div class="row">
+                <input type="text">Podaj imię i nazwisko <br>
+                <input type="email" name="" id="">Podaj adres e-mail <br>
+                <input type="tel" name="" id="">Podaj Numer Telefonu
+            </div>
+            <div class="row">
+                <label for="">Kolor lakieru</label>
+                <input type="color" name="" id="">
+            </div>
+            <div class="row">
+                Uwagi <br><textarea name="" id="" cols="60" rows="5"></textarea>
+            </div>
+            <div class="row">
+                <input type="submit" value="Zamów">
+                <input type="reset" value="Wyczyść">
+            </div>
+
+
+        </form>
+    </main>
+
+</body>
+
+</html>
